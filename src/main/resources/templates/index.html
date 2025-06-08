@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Practice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<form th:action="@{/}" th:object="${newPracticeData}" method="post">
+    <input type="text" th:field="*{name}" placeholder="Name" />
+    <input type="text" th:field="*{description}" placeholder="Description" />
+    <button type="submit">Add</button>
+</form>
+<table th:if="${!practiceData.isEmpty()}">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="practiceData:${practiceData}">
+        <th th:text="${practiceData.id}"></th>
+        <th th:text="${practiceData.name}"></th>
+        <th th:text="${practiceData.description}"></th>
+        <th><form method="POST" th:action="@{/{id}/delete(id=${practiceData.id})}">
+            <input type="submit" value="Delete"></form>
+        </form></th>
+    </tr>
+</table>
+</body>
+</html>
