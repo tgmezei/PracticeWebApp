@@ -20,9 +20,14 @@
         <th th:text="${practiceData.id}"></th>
         <th th:text="${practiceData.name}"></th>
         <th th:text="${practiceData.description}"></th>
+        <th><form method="POST" th:action="@{/{id}/toggle(id=${practiceData.id})}">
+            <input type="checkbox" name="completed"
+                   th:checked="${practiceData.completed ? 'checked' : null}"
+                   onchange="this.form.submit()"></form>
+            </th>
         <th><form method="POST" th:action="@{/{id}/delete(id=${practiceData.id})}">
             <input type="submit" value="Delete"></form>
-        </form></th>
+        </th>
     </tr>
 </table>
 </body>

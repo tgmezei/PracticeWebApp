@@ -32,4 +32,10 @@ public class PracticeController {
         practiceDataService.deletePracticeDataById(id);
         return "redirect:/";
     }
+
+    @PostMapping("/{id}/toggle")
+    public String togglePracticeData(@PathVariable int id, @RequestParam(name = "completed", defaultValue = "false") boolean completed) {
+        practiceDataService.toggleCompletedById(id, completed);
+        return "redirect:/";
+    }
 }
