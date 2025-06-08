@@ -12,13 +12,23 @@ public class PracticeData {
     public int id;
     public String name;
     public String description;
+    public boolean completed;
 
     public PracticeData() {
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public PracticeData(String name, String description) {
         this.name = name;
         this.description = description;
+        this.completed = false;
     }
 
     public int getId() {

@@ -19,12 +19,20 @@ public class PracticeDataService {
         return practiceDataRepository.findAll();
     }
 
+    public void toggleCompletedById(int id, boolean completed) {
+        PracticeData practiceData = getPracticeDataById(id);
+        if (practiceData != null) {
+            practiceData.setCompleted(completed);
+            savePracticeData(practiceData);
+        }
+    }
+
     public PracticeData getPracticeDataById(int id) {
         return practiceDataRepository.findById(id).orElse(null);
     }
 
-    public PracticeData savePracticeData(PracticeData practiceData) {
-        return practiceDataRepository.save(practiceData);
+    public void savePracticeData(PracticeData practiceData) {
+        practiceDataRepository.save(practiceData);
     }
 
     public void deletePracticeDataById(int id) {
